@@ -21,8 +21,8 @@ import java.util.List;
  * Created by Anil Gudigar on 11/10/18.
  */
 public abstract class ListViewModel<T, A extends BaseRecyclerViewModelAdapter> extends BaseViewModel implements Refreshable, OnItemClickListener<T> {
-    DbHelper mDbHelper;
-    MessageDiffCallBack messageDiffCallBack;
+    final DbHelper mDbHelper;
+    final MessageDiffCallBack messageDiffCallBack;
     @Nullable
     private List<T> data;
     @Nullable

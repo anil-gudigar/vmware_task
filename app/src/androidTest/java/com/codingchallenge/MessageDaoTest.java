@@ -80,4 +80,12 @@ public class MessageDaoTest {
         assertTrue(allMessages.isEmpty());
     }
 
+    @Test
+    public void loadAllByMessageId() {
+        Message message1 = ModelTestUtils.sampleMessage(1L,"Test1");
+        messageDao.insert(message1);
+        List<Message> allMessages  = messageDao.loadAllByMessageId(1L);
+        assertEquals(allMessages.get(0).getId(),message1.getId());
+    }
+
 }

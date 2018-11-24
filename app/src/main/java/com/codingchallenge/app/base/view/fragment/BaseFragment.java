@@ -26,7 +26,7 @@ public abstract class BaseFragment<B extends ViewDataBinding> extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         TAG = this.getClass().getSimpleName();
         B dataBinding = DataBindingUtil.inflate(inflater, getLayout(), container, false);
-        this.binding = new AutoClearedValue<B>(this, dataBinding).get();
+        this.binding = new AutoClearedValue<>(this, dataBinding).get();
         return binding.getRoot();
     }
 

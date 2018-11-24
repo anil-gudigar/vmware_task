@@ -22,7 +22,6 @@ public interface MessageDao {
      * Inserts a message into the table.
      *
      * @param message A new message.
-     * @return The row ID of the newly inserted message.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Message message);
@@ -31,7 +30,6 @@ public interface MessageDao {
      * Inserts multiple message into the database
      *
      * @param messages An array of new message.
-     * @return The row IDs of the newly inserted message.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<Message> messages);
@@ -73,6 +71,9 @@ public interface MessageDao {
     @Delete
     int delete(Message message);
 
-    @Query("DELETE FROM "+ Message.TABLE_NAME)
+    /**
+     * Delete All the Message.
+     */
+    @Query("DELETE FROM " + Message.TABLE_NAME)
     void deleteAll();
 }
