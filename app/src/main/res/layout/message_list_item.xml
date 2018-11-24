@@ -59,7 +59,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="@{messageItem.message.subject}"
-                app:isRead="@{messageItem.message.read}" />
+                app:isRead="@{safeUnbox(messageItem.message.read)}" />
 
         </RelativeLayout>
 
