@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+def cfg = rootProject.ext.configuration
+def libs = rootProject.ext.libraries
+def test = rootProject.ext.testingLibraries
+android {
+    compileSdkVersion cfg.compileVersion
+    defaultConfig {
+        applicationId cfg.package
+        minSdkVersion cfg.minSdk
+        targetSdkVersion cfg.targetSdk
+        versionCode cfg.version_code
+        versionName cfg.version_name
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    dataBinding {
+        enabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Android
+    implementation "com.android.support:support-v4:${libs.supportVersion}"
+    implementation "com.android.support:design:${libs.supportVersion}"
+    implementation "com.android.support:appcompat-v7:${libs.supportVersion}"
+    implementation "com.android.support:cardview-v7:${libs.supportVersion}"
+    implementation "com.android.support:recyclerview-v7:${libs.supportVersion}"
+    implementation "com.android.support:palette-v7:${libs.supportVersion}"
+    implementation "com.android.support.constraint:constraint-layout:${libs.constraintLayout}"
+
+    //dagger
+    implementation "com.google.dagger:dagger:${libs.dagger}"
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    annotationProcessor "com.google.dagger:dagger-compiler:${libs.dagger}"
+    implementation "com.google.dagger:dagger-android:${libs.google_dagger}"
+    implementation "com.google.dagger:dagger:${libs.google_dagger}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${libs.google_dagger}"
+    implementation "com.google.dagger:dagger-android-support:${libs.google_dagger}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${libs.google_dagger}"
+
+    // database
+    implementation "android.arch.persistence.room:rxjava2:${libs.roomDatabase}"
+    annotationProcessor "android.arch.persistence.room:compiler:${libs.roomDatabase}"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:${libs.rxjava}"
+    implementation "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
+
+    // For Lifecycle, ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:${libs.lifecycle_version}"
+    implementation "org.projectlombok:lombok:${libs.lombok}"
+    annotationProcessor "org.projectlombok:lombok:${libs.lombok}"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+
+    //Test
+    implementation "com.android.support.test.espresso:espresso-idling-resource:${test.espresso}"
+    implementation "com.google.guava:guava:${libs.guavaVersion}"
+
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+
+    // Dependencies for local unit tests
+    testImplementation "junit:junit:${test.junitVersion}"
+    androidTestImplementation "com.android.support.test:runner:${test.espressoRunner}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${test.espresso}"
+    androidTestImplementation "android.arch.core:core-testing:${test.androidcore}"
+    // Test helpers for Room
+    testImplementation "android.arch.persistence.room:testing:${test.roomtest}"
+    // Robolectric
+    testImplementation "org.robolectric:robolectric:${test.roboelectric}"
+    testImplementation "org.robolectric:shadows-support-v4:${test.robolectricshadows}"
+    // required if you want to use Mockito for unit tests
+    testImplementation "org.mockito:mockito-core:${test.mockitoVersion}"
+    // required if you want to use Mockito for Android tests
+    androidTestImplementation "org.mockito:mockito-android:${test.mockitoVersion}"
+}
