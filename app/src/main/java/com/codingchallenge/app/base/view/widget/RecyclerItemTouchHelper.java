@@ -1,17 +1,21 @@
 package com.codingchallenge.app.base.view.widget;
 
 import android.graphics.Canvas;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
 import com.codingchallenge.R;
+import com.codingchallenge.data.model.Message;
+import com.codingchallenge.features.message.view.adapters.MessageRecycleViewAdapter;
 
 /**
  * Created by Anil Gudigar on 11/24/18.
  */
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     private RecyclerItemTouchHelperListener listener;
+
     public RecyclerItemTouchHelper(int dragDirs, int swipeDirs, RecyclerItemTouchHelperListener listener) {
         super(dragDirs, swipeDirs);
         this.listener = listener;
@@ -51,10 +55,10 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
                             int actionState, boolean isCurrentlyActive) {
         final View foregroundView = viewHolder.itemView.findViewById(R.id.view_foreground);
         final View backgroundView = viewHolder.itemView.findViewById(R.id.view_background);
-        if(dX > 0){
+        if (dX > 0) {
             backgroundView.findViewById(R.id.swipe_left_icon).setVisibility(View.VISIBLE);
             backgroundView.findViewById(R.id.swipe_right_icon).setVisibility(View.GONE);
-        }else{
+        } else {
             backgroundView.findViewById(R.id.swipe_left_icon).setVisibility(View.GONE);
             backgroundView.findViewById(R.id.swipe_right_icon).setVisibility(View.VISIBLE);
         }
@@ -77,5 +81,16 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
     public interface RecyclerItemTouchHelperListener {
         void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position);
+    }
+
+    @Override
+    public int getSwipeDirs(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+        int position = viewHolder.getAdapterPosition();
+        if (recyclerView.getAdapter() instanceof MessageRecycleViewAdapter) {
+            Message iMessage = ((MessageRecycleViewAdapter) recyclerView.getAdapter()).getItem(position);
+            if(null != iMessage)
+            return iMessage.read ? 0 : super.getSwipeDirs(recyclerView, viewHolder);
+        }
+        return super.getSwipeDirs(recyclerView, viewHolder);
     }
 }
