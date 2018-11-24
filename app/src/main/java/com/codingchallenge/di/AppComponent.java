@@ -4,8 +4,6 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 
 import com.codingchallenge.app.CodingChallegeApp;
-import com.codingchallenge.helper.injection.ui.BuildersModule;
-
 import javax.inject.Singleton;
 
 import dagger.BindsInstance;
@@ -18,12 +16,12 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Singleton
 @Component(
         modules = {
+                AppModule.class,
                 AndroidSupportInjectionModule.class,
                 AndroidInjectionModule.class,
-                AppModule.class,
+                ActivityBuilderModule.class,
                 DataModule.class,
-                SchedulerModule.class,
-                BuildersModule.class
+                SchedulerModule.class
         }
 )
 public interface AppComponent {
