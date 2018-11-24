@@ -5,6 +5,7 @@ You are given sample code that defines a Room database along with a table and a 
  
  
 Requirements:
+
 * Add any code required to populate the DB with the sample messages (SampleMessages.kt) and display the list of messages in MessageListFragment
 * A message that is unread should be shown with textStyle=”bold” and a read message should be shown with textStyle=”regular”
 * You are expected to add support for swiping a message (see attach reveal_swipes.mp4) in either direction and it show a swipe action behind the cell. You are provided the asset (ic_swipe_markread.png) and the background color of the swipe cell should be #FF0591E0.
