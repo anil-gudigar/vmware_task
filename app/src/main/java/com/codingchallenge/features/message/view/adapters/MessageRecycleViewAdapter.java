@@ -15,8 +15,6 @@ import com.codingchallenge.features.message.viewmodel.MessageDiffCallBack;
 import com.codingchallenge.features.message.viewmodel.MessageItemViewModel;
 import com.codingchallenge.helper.injection.qualifier.ActivityContext;
 
-import java.util.Collections;
-
 import javax.inject.Inject;
 
 /**

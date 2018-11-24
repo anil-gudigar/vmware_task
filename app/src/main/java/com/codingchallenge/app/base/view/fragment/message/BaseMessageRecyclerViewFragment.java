@@ -1,7 +1,6 @@
 package com.codingchallenge.app.base.view.fragment.message;
 
 import android.databinding.ViewDataBinding;
-import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;

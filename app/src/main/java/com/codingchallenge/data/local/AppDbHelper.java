@@ -1,12 +1,9 @@
 package com.codingchallenge.data.local;
 
-import android.support.annotation.NonNull;
-
 import com.codingchallenge.data.model.Message;
 import com.codingchallenge.sample.SampleMessages;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 

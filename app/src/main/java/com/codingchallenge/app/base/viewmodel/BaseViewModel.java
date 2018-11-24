@@ -51,7 +51,7 @@ public abstract class BaseViewModel extends ViewModel {
      * Called when UI create for first time only, since activity / fragment might be rotated,
      * we don't need to re-init data, because view model will survive, data aren't destroyed
      *
-     * @param bundle
+     * @param bundle  bundle
      */
     protected abstract void onFirsTimeUiCreate(@Nullable Bundle bundle);
 
