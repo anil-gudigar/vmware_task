@@ -1,9 +1,7 @@
 package com.codingchallenge.roboelectric;
 
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 
-import com.codingchallenge.BuildConfig;
 import com.codingchallenge.R;
 import com.codingchallenge.features.home.view.MainActivity;
 import com.codingchallenge.features.message.view.fragments.MessageListFragment;
@@ -13,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertNotNull;
 

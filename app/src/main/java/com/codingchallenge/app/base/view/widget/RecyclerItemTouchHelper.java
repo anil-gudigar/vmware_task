@@ -12,9 +12,6 @@ import com.codingchallenge.R;
  */
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     private RecyclerItemTouchHelperListener listener;
-    private boolean swipeBack = false;
-    private static int direction = ItemTouchHelper.LEFT;
-
     public RecyclerItemTouchHelper(int dragDirs, int swipeDirs, RecyclerItemTouchHelperListener listener) {
         super(dragDirs, swipeDirs);
         this.listener = listener;
@@ -55,11 +52,9 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
         final View foregroundView = viewHolder.itemView.findViewById(R.id.view_foreground);
         final View backgroundView = viewHolder.itemView.findViewById(R.id.view_background);
         if(dX > 0){
-            direction = ItemTouchHelper.RIGHT;
             backgroundView.findViewById(R.id.swipe_left_icon).setVisibility(View.VISIBLE);
             backgroundView.findViewById(R.id.swipe_right_icon).setVisibility(View.GONE);
         }else{
-            direction = ItemTouchHelper.LEFT;
             backgroundView.findViewById(R.id.swipe_left_icon).setVisibility(View.GONE);
             backgroundView.findViewById(R.id.swipe_right_icon).setVisibility(View.VISIBLE);
         }
