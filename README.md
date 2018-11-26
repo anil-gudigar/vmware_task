@@ -15,3 +15,19 @@ Requirements:
 * Marking a message as read that is already read should do nothing
 * Make sure the list can be scrolled normally after you implement swiping on message cells
 * Connected tests for UI are not necessary but provide unit tests where applicable
+
+Things that have been done...
+
+1.	I have tried to modularize the code using generics-oriented programming.
+2.	The reason for the choice is of generics to create a framework which can be extended to all over application.
+3.	Create a local data source using room and DAO.
+4.	Data Source related DAO classes can be tested independently.
+5.	Used databinding with View Model.
+6.	Rxjava Observables. 
+7.	I have used robo electric for testing.
+       
+Things that needs to done (or wished I could have done it) ...
+
+1.	Test cases for all the model and data source code.
+2.	100% code coverage.
+
